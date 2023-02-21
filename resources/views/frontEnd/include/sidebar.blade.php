@@ -31,6 +31,30 @@
             </a>
           </li>
           <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-person-booth"></i>
+                    <p>
+                        Employee Manage
+                        <i class="fas fa-angle-left right"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a href="{{route('add.employee')}}" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Add Employee</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{route('all.employee')}}" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Manage All Employee</p>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+          <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-book"></i>
               <p>

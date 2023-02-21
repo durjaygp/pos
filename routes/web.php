@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Pos\EmployeeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,11 +16,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::redirect('/', 'login');
-
-
-
-
-
 
 
 
@@ -40,9 +36,17 @@ require __DIR__.'/auth.php';
 
 Route::middleware(['auth'])->group(function(){
 
-    Route::get('admin/profile', [AdminController::class,'adminProfile'])->name('admin.profile');
-    Route::post('admin/profile/update', [AdminController::class,'adminProfileStore'])->name('admin.profile.store');
-    
+    Route::get('/admin/profile', [AdminController::class,'adminProfile'])->name('admin.profile');
+    Route::post('/admin/profile/update', [AdminController::class,'adminProfileStore'])->name('admin.profile.store');
+
+    Route::controller(EmployeeController::class)->group(function (){
+        Route::get('/admin/employee','allEmployee')->name('all.employee');
+        
+        Route::get('/admin/employee/add','addEmployee')->name('add.employee');
+
+
+    });
+
 
 
 });

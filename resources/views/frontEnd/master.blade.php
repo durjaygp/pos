@@ -16,6 +16,7 @@
   <link rel="stylesheet" href="{{asset('admin/plugins/overlayScrollbars/css/OverlayScrollbars.min.css')}}">
   <link rel="stylesheet" href="{{asset('admin/plugins/daterangepicker/daterangepicker.css')}}">
   <link rel="stylesheet" href="{{asset('admin/plugins/summernote/summernote-bs4.min.css')}}">
+    @yield('css')
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -32,7 +33,7 @@
   </div>
   <!-- /.content-wrapper -->
   @include('frontEnd.include.footer')
-  
+
 </div>
 <!-- ./wrapper -->
 
@@ -68,5 +69,7 @@
 <script src="{{asset('admin')}}/dist/js/adminlte.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{asset('admin')}}/dist/js/pages/dashboard.js"></script>
+@yield('js')
+
 </body>
 </html>
