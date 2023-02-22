@@ -16,6 +16,7 @@
   <link rel="stylesheet" href="{{asset('admin/plugins/overlayScrollbars/css/OverlayScrollbars.min.css')}}">
   <link rel="stylesheet" href="{{asset('admin/plugins/daterangepicker/daterangepicker.css')}}">
   <link rel="stylesheet" href="{{asset('admin/plugins/summernote/summernote-bs4.min.css')}}">
+  <link rel="stylesheet" href="{{asset('admin')}}/iziToast/dist/css/iziToast.min.css">
     @yield('css')
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -69,6 +70,33 @@
 <script src="{{asset('admin')}}/dist/js/adminlte.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{asset('admin')}}/dist/js/pages/dashboard.js"></script>
+<script src="{{asset('admin')}}/iziToast/dist/js/iziToast.min.js"></script>
+
+@if($errors->any())
+    @foreach($errors->all() as $error)
+        <script>
+            iziToast.error({
+                title: '',
+                position:'topRight',
+                message: '{{$error}}',
+            });
+        </script>
+    @endforeach
+
+@endif
+
+@if(session()->get('success'))
+    <script>
+        iziToast.success({
+            title: '',
+            position:'topRight',
+            message: '{{session()->get('success')}}',
+        });
+
+    </script>
+
+@endif
+
 @yield('js')
 
 </body>

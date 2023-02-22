@@ -25,15 +25,16 @@ class AdminController extends Controller
         if($request->file('photo')){
             $file = $request->file('photo');
             @unlink(public_path('upload/admin_image/'.$data->photo));
-            $filename = date('YmdHi').$file->getClientOriginalName();
+            $filename = date('YmdHi').'.' . $request->get('photo')->getClientOriginalExtension();
+            $nameimage = Str::slug($filename);
 
            // $filename = Str::slug(date('YmdHi') .$file->getClientOriginalName(),'-');
 
-            $file->move(public_path('upload/admin_image'),$filename);
-            $data['photo'] = $filename;
+            $file->move(public_path('upload/admin_image'),$nameimage);
+            $data['photo'] = $nameimage;
         }
         $data->save();
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Profile Updated Successfully');
         
     }//End Method
 }
